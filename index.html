@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CTParkea | Valet Parking sin tickets de papel: más control, menos pérdida de dinero</title>
+  <meta name="description" content="CTParkea digitaliza tu Valet Parking: recepción, cobro y entrega de vehículos por SMS, Web y App. Cero tickets de papel, cero filas y control total de tus ingresos.">
+  <meta name="theme-color" content="#3A276B">
+  <meta property="og:title" content="CTParkea | Más control, menos pérdida de dinero">
+  <meta property="og:description" content="Valet Parking 100% sin tickets de papel. Implementación en 1 a 2 días.">
+  <meta property="og:url" content="https://www.ctparkea.com/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="https://www.ctparkea.com/images/logo/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- SVG sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.8c1.7.8 2.8 2.5 3 5.2"/></g></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 16v-3M12 16V9M16 16v-5"/></g></symbol>
+  <symbol id="i-mega" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 4V5L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8.5a5 5 0 0 1 0 7M20 6a8.5 8.5 0 0 1 0 12"/></g></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10v18l-5-3.5L7 21z"/><circle cx="12" cy="7.5" r="1.6"/></g></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4"/><path d="M10.5 12.5L20 3M16 7l3 3M14 9l2 2"/></g></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5l5 5L9 20H4v-5z"/><path d="M12.5 6.5l5 5"/></g></symbol>
+  <symbol id="i-tablet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M11 18.5h2"/></g></symbol>
+  <symbol id="i-school" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></g></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V11l2-5h10l2 5v5"/><path d="M3 16h18v3H3zM5 11h14"/><circle cx="7.5" cy="13.5" r=".6"/><circle cx="16.5" cy="13.5" r=".6"/></g></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1 14H6z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></g></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V6M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-7v6"/><circle cx="7" cy="11.5" r="2"/></g></symbol>
+  <symbol id="i-cross" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></g></symbol>
+  <symbol id="i-food" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 21V3c-2 1-3.5 3.5-3.5 7v3H17"/></g></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></g></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.7 5.7 3.7 9s-1.2 6.3-3.7 9c-2.5-2.7-3.7-5.7-3.7-9S9.5 5.7 12 3z"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6 6l1.5-2.3L20 14.5V18a2 2 0 0 1-2 2A15 15 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></g></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></g></symbol>
+  <symbol id="i-carfill" viewBox="0 0 24 24"><path fill="currentColor" d="M18.9 6c-.2-.6-.8-1-1.4-1H6.5c-.7 0-1.2.4-1.4 1L3 12v8c0 .6.4 1 1 1h1c.6 0 1-.4 1-1v-1h12v1c0 .6.4 1 1 1h1c.6 0 1-.4 1-1v-8l-2.1-6zM6.5 16c-.8 0-1.5-.7-1.5-1.5S5.7 13 6.5 13s1.5.7 1.5 1.5S7.3 16 6.5 16zm11 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></symbol>
+  <symbol id="i-carcard" viewBox="0 0 28 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="1" width="26" height="22" rx="4"/><path d="M15.5 8h8M15.5 12h8M15.5 16h8"/></g><path fill="currentColor" d="M11.6 10.3l-.9-2.4c-.1-.3-.4-.5-.7-.5H5.9c-.3 0-.6.2-.7.5l-.9 2.4v4.2c0 .3.2.5.5.5h.6c.3 0 .5-.2.5-.5V14h6.2v.5c0 .3.2.5.5.5h.4c.3 0 .5-.2.5-.5v-4.2zM6 12.8a.7.7 0 1 1 0-1.4.7.7 0 0 1 0 1.4zm4.9 0a.7.7 0 1 1 0-1.4.7.7 0 0 1 0 1.4zM5.3 10.4l.8-2.1h3.8l.8 2.1H5.3z"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="top">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="https://www.ctparkea.com/" aria-label="CTParkea, inicio">
+      <img src="https://www.ctparkea.com/images/logo/logo.png" alt="CTParkea" height="36" decoding="async">
+    </a>
+
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#como-funciona" data-i18n="nav.how">Cómo funciona</a>
+      <a href="#beneficios" data-i18n="nav.benefits">Beneficios</a>
+      <a href="#kit" data-i18n="nav.kit">Kit Parquero</a>
+      <a href="#sectores" data-i18n="nav.sectors">Sectores</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+
+    <div class="nav__actions">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang__btn" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn--ghost btn--sm nav__login" href="https://www.ctparkea.com/login" data-i18n="nav.login">Iniciar Sesión</a>
+      <a class="btn btn--wa btn--sm nav__wa" href="https://wa.me/17865564044" data-wa="demo" target="_blank" rel="noopener">
+        <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span data-i18n="nav.wa">Contactar por WhatsApp</span>
+      </a>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="sr-only" data-i18n="nav.menu">Abrir menú</span>
+        <span class="nav__burger" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="container" aria-label="Móvil">
+      <a href="#como-funciona" data-i18n="nav.how">Cómo funciona</a>
+      <a href="#beneficios" data-i18n="nav.benefits">Beneficios</a>
+      <a href="#kit" data-i18n="nav.kit">Kit Parquero</a>
+      <a href="#sectores" data-i18n="nav.sectors">Sectores</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <div class="mobile-menu__cta">
+        <a class="btn btn--outline" href="https://www.ctparkea.com/login" data-i18n="nav.login">Iniciar Sesión</a>
+        <a class="btn btn--wa" href="https://wa.me/17865564044" data-wa="demo" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span data-i18n="nav.wa">Contactar por WhatsApp</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow eyebrow--light"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Valet Parking 100% sin tickets de papel</span></p>
+      <h1 class="hero__title" data-i18n="hero.title"><span class="hl">Más control, menos pérdida de dinero:</span> digitaliza tu Valet Parking sin tickets de papel</h1>
+      <p class="hero__sub" data-i18n="hero.sub">CTParkea automatiza la recepción, el cobro y la entrega de vehículos por <strong>SMS, Web y App</strong>. Tus clientes no hacen fila ni descargan nada, y tú frenas hasta un <strong>10% de fuga de ingresos</strong> por boletos manuales no reportados o reutilizados.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--wa btn--lg" href="https://wa.me/17865564044" data-wa="demo" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span data-i18n="hero.cta1">Agendar Demo por WhatsApp</span>
+        </a>
+        <a class="btn btn--glass btn--lg" href="#como-funciona">
+          <span data-i18n="hero.cta2">Ver cómo funciona</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+      <ul class="hero__trust">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg><span data-i18n="hero.t1">Operando en 1 a 2 días</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-school"/></svg><span data-i18n="hero.t2">Capacitación presencial u online</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><span data-i18n="hero.t3">Datos encriptados</span></li>
+      </ul>
+    </div>
+
+    <!-- Visual: réplica de la app real (operador) + SMS real del cliente -->
+    <div class="hero__visual" aria-hidden="true">
+      <!-- Teléfono del operador: dashboard "Vehículos" -->
+      <div class="device device--op">
+        <div class="device__island"></div>
+        <div class="device__screen app">
+          <div class="app__url"><span>ctparkea.com/in</span></div>
+          <div class="app__top">
+            <img src="https://www.ctparkea.com/images/logo/logo.png" alt="" height="22" decoding="async">
+            <div class="app__counts">
+              <span><span data-i18n="app.onboard">Coches a bordo</span>:4</span>
+              <span><span data-i18n="app.records">Registros</span>:1</span>
+              <span><span data-i18n="app.exits">Salidas</span>:0</span>
+            </div>
+          </div>
+          <div class="app__card">
+            <div class="app__head">
+              <p class="app__title"><svg aria-hidden="true"><use href="#i-carfill"/></svg><span data-i18n="app.vehicles">Vehículos</span></p>
+              <ul class="app__legend">
+                <li class="lg lg--paid" data-i18n="st.paid">Pagado</li>
+                <li class="lg lg--req" data-i18n="st.request">Solicitud</li>
+                <li class="lg lg--unpaid" data-i18n="st.unpaid">Sin Pagar</li>
+                <li class="lg lg--route" data-i18n="st.onroute">En camino</li>
+                <li class="lg lg--parked" data-i18n="st.parked">Estacionado</li>
+              </ul>
+            </div>
+            <div class="app__search" data-i18n="app.search">Buscar</div>
+            <span class="app__btn" data-i18n="app.new">Nuevo Cliente</span>
+            <div class="app__tiles">
+              <div class="tile tile--req"><b>0001</b></div>
+              <div class="tile tile--parked"><b>1452</b><small>8M 6D 2H 12M</small></div>
+              <div class="tile tile--route"><b>0612</b></div>
+              <div class="tile tile--paid"><b>0098</b><small>1H 05M</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teléfono del cliente: SMS real -->
+      <div class="device device--client">
+        <div class="device__island"></div>
+        <div class="device__screen smsapp">
+          <div class="smsapp__bar"><span class="smsapp__back">←</span> 1919</div>
+          <div class="smsapp__thread">
+            <p class="smsapp__bubble"><span data-i18n="sms.l1">Gracias por visitar Restaurante Come Sabroso</span><br><span data-i18n="sms.l2">Ticket Nro</span> 0001<br><br><span data-i18n="sms.l3">Para solicitar su vehiculo, ingrese:</span> <u>www.ctparkea.com/client/QSOr4SOV0G</u></p>
+          </div>
+          <div class="smsapp__input"><span class="smsapp__plus">+</span><span class="smsapp__field">Text message</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS / PROBLEMA ============ -->
+<section class="stats" aria-labelledby="stats-title">
+  <div class="container">
+    <h2 id="stats-title" class="stats__title" data-i18n="stats.title">Cada ticket de papel es dinero que puede no llegar a tu caja.</h2>
+    <ul class="stats__grid">
+      <li class="reveal"><b>~10%</b><span data-i18n="stats.s1">de los ingresos se fuga con tickets manuales no reportados, reutilizados o falsificados</span></li>
+      <li class="reveal"><b>0</b><span data-i18n="stats.s2">boletos impresos: cada servicio queda registrado en el sistema</span></li>
+      <li class="reveal"><b>5</b><span data-i18n="stats.s3">pasos para tu cliente, sin filas y sin descargar apps</span></li>
+      <li class="reveal"><b>1–2</b><span data-i18n="stats.s4">días para tener tu operación funcionando</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section class="section" id="como-funciona" aria-labelledby="how-title">
+  <div class="container">
+    <header class="section__head">
+      <p class="eyebrow" data-i18n="how.eyebrow">Cómo funciona</p>
+      <h2 id="how-title" data-i18n="how.title">Un solo flujo digital, dos experiencias sin fricción</h2>
+      <p data-i18n="how.sub">Tu cliente gestiona todo desde su celular. Tu equipo opera desde la app. Tú lo ves todo desde el panel.</p>
+    </header>
+
+    <div class="tabs">
+      <div class="tabs__list" role="tablist" aria-label="Flujos">
+        <button type="button" role="tab" id="tab-client" aria-controls="panel-client" aria-selected="true" class="tabs__tab" data-i18n="how.tab1">Experiencia del Cliente</button>
+        <button type="button" role="tab" id="tab-valet" aria-controls="panel-valet" aria-selected="false" tabindex="-1" class="tabs__tab" data-i18n="how.tab2">Operación del Valet</button>
+      </div>
+
+      <div class="tabs__panel" role="tabpanel" id="panel-client" aria-labelledby="tab-client" tabindex="0">
+        <p class="tabs__lead" data-i18n="how.leadClient"><strong>5 pasos, sin descargar apps.</strong> Todo ocurre por SMS y un enlace web.</p>
+        <ol class="steps steps--5">
+          <li class="step"><span class="step__n">1</span><h3 data-i18n="c1.t">Registro</h3><p data-i18n="c1.d">Entrega su vehículo y da su nombre y número celular. Nada que imprimir.</p></li>
+          <li class="step"><span class="step__n">2</span><h3 data-i18n="c2.t">Confirmación</h3><p data-i18n="c2.d">Recibe un SMS de bienvenida con el enlace a su boleto digital.</p></li>
+          <li class="step"><span class="step__n">3</span><h3 data-i18n="c3.t">Pago anticipado</h3><p data-i18n="c3.d">Paga desde su celular con Pago Móvil, débito o crédito, con propina opcional.</p></li>
+          <li class="step"><span class="step__n">4</span><h3 data-i18n="c4.t">Solicitud</h3><p data-i18n="c4.d">Pide su vehículo con anticipación desde cualquier punto del establecimiento.</p></li>
+          <li class="step"><span class="step__n">5</span><h3 data-i18n="c5.t">Salida</h3><p data-i18n="c5.d">Recibe un SMS cuando su auto está listo y muestra su boleto digital.</p></li>
+        </ol>
+      </div>
+
+      <div class="tabs__panel" role="tabpanel" id="panel-valet" aria-labelledby="tab-valet" tabindex="0" hidden>
+        <p class="tabs__lead" data-i18n="how.leadValet"><strong>4 pasos en la app o la web.</strong> Tu equipo aprende el proceso en una sola capacitación.</p>
+        <ol class="steps steps--4">
+          <li class="step"><span class="step__n">1</span><h3 data-i18n="v1.t">Registro</h3><p data-i18n="v1.d">Captura la placa, los datos y el celular del cliente desde la tablet o el teléfono.</p></li>
+          <li class="step"><span class="step__n">2</span><h3 data-i18n="v2.t">Parqueo del vehículo</h3><p data-i18n="v2.d">Registra el estacionamiento del auto; la llave queda identificada con su etiqueta.</p></li>
+          <li class="step"><span class="step__n">3</span><h3 data-i18n="v3.t">Solicitud del vehículo</h3><p data-i18n="v3.d">Recibe la alerta en cuanto el cliente pide su auto y sale a buscarlo.</p></li>
+          <li class="step"><span class="step__n">4</span><h3 data-i18n="v4.t">Cierre del proceso</h3><p data-i18n="v4.d">Entrega el vehículo, valida el boleto digital y el servicio queda cerrado en el sistema.</p></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD / BENEFICIOS ============ -->
+<section class="section section--tint" id="beneficios" aria-labelledby="dash-title">
+  <div class="container dash">
+    <div class="dash__copy">
+      <p class="eyebrow" data-i18n="dash.eyebrow">Panel Administrativo</p>
+      <h2 id="dash-title" data-i18n="dash.title">Cada vehículo, cada pago y cada chofer, visibles en tiempo real</h2>
+      <p class="lead" data-i18n="dash.sub">Deja de cuadrar caja contra tickets de papel. El panel registra cada servicio desde que el auto llega hasta que sale, así ningún cobro queda sin reportar.</p>
+
+      <ul class="features">
+        <li class="feature"><span class="feature__ico"><svg aria-hidden="true"><use href="#i-pulse"/></svg></span><div><h3 data-i18n="f1.t">Estatus en tiempo real</h3><p data-i18n="f1.d">Cada vehículo con su color de estatus: Sin Pagar, Pagado, Estacionado, Solicitud, En camino y Entregado. Ves tu operación de un vistazo.</p></div></li>
+        <li class="feature"><span class="feature__ico"><svg aria-hidden="true"><use href="#i-users"/></svg></span><div><h3 data-i18n="f2.t">Asignación de choferes</h3><p data-i18n="f2.d">Asigna cada solicitud al chofer disponible y sabe quién entregó qué vehículo.</p></div></li>
+        <li class="feature"><span class="feature__ico"><svg aria-hidden="true"><use href="#i-report"/></svg></span><div><h3 data-i18n="f3.t">Reportes de transacciones</h3><p data-i18n="f3.d">Tarifa, comisión y propina de cada servicio, listas para conciliar sin hojas de cálculo.</p></div></li>
+        <li class="feature"><span class="feature__ico"><svg aria-hidden="true"><use href="#i-mega"/></svg></span><div><h3 data-i18n="f4.t">Publicidad en la app web</h3><p data-i18n="f4.d">Muestra tus promociones a cada cliente mientras espera su vehículo y atrae nuevos prospectos.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="dash__visual reveal" aria-hidden="true">
+      <!-- Tablet: réplica de la vista "Vehículos" + modal "Información del Vehículo" -->
+      <div class="tablet">
+        <div class="tablet__screen app app--wide">
+          <div class="app__top">
+            <img src="https://www.ctparkea.com/images/logo/logo.png" alt="" height="24" loading="lazy" decoding="async">
+            <div class="app__counts">
+              <span><span data-i18n="app.onboard">Coches a bordo</span>:7</span>
+              <span><span data-i18n="app.records">Registros</span>:9</span>
+              <span><span data-i18n="app.exits">Salidas</span>:2</span>
+            </div>
+          </div>
+          <div class="app__card">
+            <div class="app__head">
+              <p class="app__title"><svg aria-hidden="true"><use href="#i-carfill"/></svg><span data-i18n="app.vehicles">Vehículos</span></p>
+              <ul class="app__legend">
+                <li class="lg lg--paid" data-i18n="st.paid">Pagado</li>
+                <li class="lg lg--req" data-i18n="st.request">Solicitud</li>
+                <li class="lg lg--unpaid" data-i18n="st.unpaid">Sin Pagar</li>
+                <li class="lg lg--route" data-i18n="st.onroute">En camino</li>
+                <li class="lg lg--parked" data-i18n="st.parked">Estacionado</li>
+              </ul>
+            </div>
+            <div class="app__search" data-i18n="app.search">Buscar</div>
+            <span class="app__btn" data-i18n="app.new">Nuevo Cliente</span>
+            <div class="app__tiles app__tiles--4">
+              <div class="tile tile--req"><b>0001</b></div>
+              <div class="tile tile--parked"><b>1452</b><small>2H 12M</small></div>
+              <div class="tile tile--route"><b>0612</b></div>
+              <div class="tile tile--paid"><b>0098</b><small>1H 05M</small></div>
+              <div class="tile tile--unpaid"><b>0731</b><small>0M</small></div>
+              <div class="tile tile--parked"><b>0215</b><small>3H 40M</small></div>
+              <div class="tile tile--paid"><b>0440</b><small>48M</small></div>
+              <div class="tile tile--parked"><b>0389</b><small>1H 22M</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vinfo">
+        <p class="vinfo__title"><svg aria-hidden="true"><use href="#i-carcard"/></svg><span data-i18n="info.title">Información del Vehículo</span></p>
+        <u class="vinfo__link" data-i18n="info.send">Enviar Enlace</u>
+        <dl class="vinfo__list">
+          <dt data-i18n="info.ticket">Ticket #:</dt><dd>0001</dd>
+          <dt data-i18n="info.phone">Teléfono:</dt><dd>+1******46</dd>
+          <dt data-i18n="info.plate">Placa:</dt><dd>CR7T10</dd>
+          <dt data-i18n="info.make">Marca:</dt><dd>Toyota</dd>
+          <dt data-i18n="info.model">Modelo:</dt><dd>Camry</dd>
+          <dt data-i18n="info.price">Precio:</dt><dd data-i18n="info.free">Gratuita</dd>
+          <dt data-i18n="info.status">Status:</dt><dd class="lg lg--req" data-i18n="st.request">Solicitud</dd>
+        </dl>
+        <span class="app__btn app__btn--center" data-i18n="info.cta">En camino</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KIT PARQUERO ============ -->
+<section class="section" id="kit" aria-labelledby="kit-title">
+  <div class="container">
+    <div class="kit reveal">
+      <div class="kit__copy">
+        <p class="eyebrow eyebrow--light" data-i18n="kit.eyebrow">Onboarding físico + digital</p>
+        <h2 id="kit-title" data-i18n="kit.title">Kit Parquero: todo listo para operar desde el primer día</h2>
+        <p data-i18n="kit.sub">Al activarte recibes el kit físico que reemplaza al ticket de papel y, si lo necesitas, el hardware para operar. Sin compras de equipos ni configuraciones complicadas.</p>
+        <a class="btn btn--wa btn--lg" href="https://wa.me/17865564044" data-wa="kit" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span data-i18n="kit.cta">Cotizar Kit Parquero por WhatsApp</span>
+        </a>
+      </div>
+      <ul class="kit__items">
+        <li><span class="kit__ico"><svg aria-hidden="true"><use href="#i-tag"/></svg></span><div><h3 data-i18n="k1.t">Etiquetas colgantes para retrovisor</h3><p data-i18n="k1.d">Reutilizables. Identifican cada vehículo sin papel.</p></div></li>
+        <li><span class="kit__ico"><svg aria-hidden="true"><use href="#i-key"/></svg></span><div><h3 data-i18n="k2.t">Etiquetas para llaves</h3><p data-i18n="k2.d">Reutilizables. Cada llave ligada a su vehículo.</p></div></li>
+        <li><span class="kit__ico"><svg aria-hidden="true"><use href="#i-pen"/></svg></span><div><h3 data-i18n="k3.t">Marcadores de pizarra</h3><p data-i18n="k3.d">Para marcar y reutilizar las etiquetas en cada turno.</p></div></li>
+        <li class="kit__featured"><span class="kit__ico"><svg aria-hidden="true"><use href="#i-tablet"/></svg></span><div><span class="badge" data-i18n="k4.badge">Opcional · Arrendamiento</span><h3 data-i18n="k4.t">Tablet Samsung 8" con 4G LTE</h3><p data-i18n="k4.d">Con la licencia de CTParkea instalada y plan de datos incluido. La enciendes y operas.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTORES (BENTO) ============ -->
+<section class="section section--tint" id="sectores" aria-labelledby="sec-title">
+  <div class="container">
+    <header class="section__head">
+      <p class="eyebrow" data-i18n="sec.eyebrow">Sectores</p>
+      <h2 id="sec-title" data-i18n="sec.title">Diseñado para negocios donde cada minuto y cada cobro cuentan</h2>
+    </header>
+    <div class="bento">
+      <article class="bento__card bento__card--hero reveal">
+        <span class="bento__ico"><svg aria-hidden="true"><use href="#i-car"/></svg></span>
+        <h3 data-i18n="s1.t">Empresas operadoras de Valet Parking</h3>
+        <p data-i18n="s1.d">Recupera hasta el 10% de ingresos que hoy se pierden con tickets manuales y audita cada servicio, cada chofer y cada cobro desde un solo panel.</p>
+        <ul class="bento__list">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="s1.l1">Cero tickets reutilizados o no reportados</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="s1.l2">Reportes de transacciones por servicio</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="s1.l3">Propinas registradas y transparentes</span></li>
+        </ul>
+      </article>
+      <article class="bento__card reveal">
+        <span class="bento__ico"><svg aria-hidden="true"><use href="#i-bag"/></svg></span>
+        <h3 data-i18n="s2.t">Centros Comerciales</h3>
+        <p data-i18n="s2.d">Rotación ágil en horas pico: el cliente pide su auto mientras termina de comprar y lo encuentra esperándolo.</p>
+      </article>
+      <article class="bento__card reveal">
+        <span class="bento__ico"><svg aria-hidden="true"><use href="#i-bed"/></svg></span>
+        <h3 data-i18n="s3.t">Hoteles</h3>
+        <p data-i18n="s3.d">Experiencia VIP desde la llegada: sin tickets que perder y el auto listo con un solo toque.</p>
+      </article>
+      <article class="bento__card reveal">
+        <span class="bento__ico"><svg aria-hidden="true"><use href="#i-cross"/></svg></span>
+        <h3 data-i18n="s4.t">Clínicas</h3>
+        <p data-i18n="s4.d">Cero estrés para pacientes y familiares: solicitan su vehículo antes de salir de la consulta.</p>
+      </article>
+      <article class="bento__card reveal">
+        <span class="bento__ico"><svg aria-hidden="true"><use href="#i-food"/></svg></span>
+        <h3 data-i18n="s5.t">Restaurantes</h3>
+        <p data-i18n="s5.d">Un cierre perfecto de la visita y un espacio en la app web para promocionar tu negocio.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="container faq">
+    <header class="section__head section__head--left">
+      <p class="eyebrow" data-i18n="faq.eyebrow">Preguntas frecuentes</p>
+      <h2 id="faq-title" data-i18n="faq.title">Todo lo que necesitas saber antes de dar el salto</h2>
+      <p data-i18n="faq.sub">¿Tienes otra pregunta? Escríbenos por WhatsApp y te respondemos.</p>
+    </header>
+    <div class="accordion">
+      <details class="acc"><summary data-i18n="q1">¿Cuánto tarda la implementación?</summary><div class="acc__body"><p data-i18n="a1">Entre 1 y 2 días. Configuramos tu cuenta, entregamos el Kit Parquero y capacitamos a tu equipo.</p></div></details>
+      <details class="acc"><summary data-i18n="q2">¿Qué equipos necesito para usar CTParkea?</summary><div class="acc__body"><p data-i18n="a2">Etiquetas colgantes y etiquetas para llaves (incluidas en el Kit Parquero), una tablet 4G o un smartphone y el software CTParkea. Si no tienes equipos, puedes arrendar tablets Samsung de 8" con 4G LTE, licencia instalada y plan de datos.</p></div></details>
+      <details class="acc"><summary data-i18n="q3">¿Ofrecen capacitación para el personal?</summary><div class="acc__body"><p data-i18n="a3">Sí. Capacitamos a tu personal en el uso del software, de forma presencial u online.</p></div></details>
+      <details class="acc"><summary data-i18n="q4">¿Es seguro para mis clientes y para mi negocio?</summary><div class="acc__body"><p data-i18n="a4">Sí. Los datos de tus clientes están encriptados; el sistema los protege y los oculta.</p></div></details>
+      <details class="acc"><summary data-i18n="q5">¿Mis clientes tienen que descargar una app?</summary><div class="acc__body"><p data-i18n="a5">No. Tu cliente recibe un SMS con su boleto digital y hace todo desde el navegador de su celular: pagar, dejar propina y pedir su vehículo.</p></div></details>
+      <details class="acc"><summary data-i18n="q6">¿Cuál es el costo del servicio?</summary><div class="acc__body"><p data-i18n="a6">Tenemos varios paquetes que se adaptan al volumen y las necesidades de tu operación. Escríbenos por WhatsApp y te enviamos una propuesta.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-band" aria-labelledby="cta-title">
+  <div class="container cta-band__inner">
+    <div>
+      <h2 id="cta-title" data-i18n="cta.title">¿Cuánto dinero se te escapa hoy en tickets de papel?</h2>
+      <p data-i18n="cta.sub">Agenda una demo por WhatsApp y te mostramos cómo operar sin papel en 1 a 2 días.</p>
+    </div>
+    <a class="btn btn--wa btn--lg" href="https://wa.me/17865564044" data-wa="demo" target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span data-i18n="hero.cta1">Agendar Demo por WhatsApp</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img src="https://www.ctparkea.com/images/logo/logoWhiteComplete.png" alt="CTParkea" height="44" loading="lazy" decoding="async">
+      <p data-i18n="foot.tag">Más control, menos pérdida de dinero. Valet Parking sin tickets de papel.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/ctparkea/" target="_blank" rel="noopener" aria-label="Instagram de CTParkea"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+        <a href="https://www.ctparkea.com/" aria-label="Sitio web de CTParkea"><svg aria-hidden="true"><use href="#i-globe"/></svg></a>
+        <a href="https://wa.me/17865564044" data-wa="fab" target="_blank" rel="noopener" aria-label="WhatsApp de CTParkea"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+      </div>
+    </div>
+
+    <nav class="footer__col" aria-label="Enlaces útiles">
+      <h3 data-i18n="foot.links">Enlaces útiles</h3>
+      <a href="#como-funciona" data-i18n="nav.how">Cómo funciona</a>
+      <a href="#beneficios" data-i18n="nav.benefits">Beneficios</a>
+      <a href="#kit" data-i18n="nav.kit">Kit Parquero</a>
+      <a href="#sectores" data-i18n="nav.sectors">Sectores</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="https://www.ctparkea.com/login" data-i18n="nav.login">Iniciar Sesión</a>
+    </nav>
+
+    <div class="footer__col">
+      <h3 data-i18n="foot.contact">Contacto</h3>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=6994+NW+82nd+Ave+Miami+FL+33166" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>6994 NW 82AV Miami Fl 33166. USA</a>
+      <a href="tel:+17865564044"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>+1 786-556-4044</a>
+      <a href="mailto:soporte@ctparkea.com"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>soporte@ctparkea.com</a>
+    </div>
+
+    <div class="footer__col">
+      <h3 data-i18n="foot.pay">Métodos de pago</h3>
+      <div class="pay">
+        <span class="pay__badge"><img src="https://www.ctparkea.com/images/banks/visa.png" alt="Visa" height="22" loading="lazy" decoding="async"></span>
+        <span class="pay__badge"><img src="https://www.ctparkea.com/images/banks/martercard.png" alt="Mastercard" height="22" loading="lazy" decoding="async"></span>
+        <span class="pay__badge pay__badge--text" data-i18n="foot.pm">Pago Móvil</span>
+      </div>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© <span id="year">2026</span> CTParkea. <span data-i18n="foot.rights">Todos los derechos reservados.</span></p>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FAB ============ -->
+<div class="wa-fab" id="wa-fab">
+  <div class="wa-panel" id="wa-panel" role="dialog" aria-modal="false" aria-labelledby="wa-panel-title" hidden>
+    <div class="wa-panel__head">
+      <svg aria-hidden="true"><use href="#i-wa"/></svg>
+      <div>
+        <p id="wa-panel-title" data-i18n="wa.title">¿Hablamos por WhatsApp?</p>
+        <small data-i18n="wa.sub">Te responde el equipo de CTParkea</small>
+      </div>
+      <button type="button" class="wa-panel__close" aria-label="Cerrar" data-i18n-aria="wa.close">×</button>
+    </div>
+    <fieldset class="wa-panel__sectors">
+      <legend data-i18n="wa.legend">¿Qué tipo de negocio tienes? <span>(opcional)</span></legend>
+      <label><input type="radio" name="wa-sector" value="valet"><span data-i18n="sector.valet">Empresa de Valet</span></label>
+      <label><input type="radio" name="wa-sector" value="hotel"><span data-i18n="sector.hotel">Hotel</span></label>
+      <label><input type="radio" name="wa-sector" value="restaurant"><span data-i18n="sector.restaurant">Restaurante</span></label>
+      <label><input type="radio" name="wa-sector" value="clinic"><span data-i18n="sector.clinic">Clínica</span></label>
+      <label><input type="radio" name="wa-sector" value="mall"><span data-i18n="sector.mall">Centro Comercial</span></label>
+    </fieldset>
+    <a class="btn btn--wa btn--block" href="https://wa.me/17865564044" data-wa="fab" target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span data-i18n="wa.open">Abrir chat de WhatsApp</span>
+    </a>
+  </div>
+  <span class="wa-fab__tip" id="wa-tip" data-i18n="wa.title" aria-hidden="true">¿Hablamos por WhatsApp?</span>
+  <button type="button" class="wa-fab__btn" aria-expanded="false" aria-controls="wa-panel" aria-label="¿Hablamos por WhatsApp?" data-i18n-aria="wa.title">
+    <svg aria-hidden="true"><use href="#i-wa"/></svg>
+  </button>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/whatsapp.js" defer></script>
+</body>
+</html>
